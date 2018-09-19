@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<mapper namespace="dao.UserDao">
+    <select id="login" parameterType="user" resultType="int" >
+        SELECT count(*) FROM user WHERE username=#{username} AND password=#{password}
+    </select>
+
+    <select id="register" parameterType="user" >
+        INSERT INTO user VALUES (#{uid},#{username},#{password},#{email},#{state},#{code})
+    </select>
+
+    <select id="post" parameterType="post">
+        INSERT  INTO  post VALUES (#{pid},#{ptitle},#{pcontext},#{ckind},#{pkind})
+    </select>
+
+    <select id="findAllPost" resultType="post">
+        SELECT * FROM post
+    </select>
+</mapper>
